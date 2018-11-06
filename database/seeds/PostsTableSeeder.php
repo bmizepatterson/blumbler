@@ -93,7 +93,7 @@ class PostsTableSeeder extends Seeder
                     'body' => str_random(rand(100, 500)),
                     'user_id' => $user->id,
                     'created_at' => $user->created_at->addMinutes(60),
-                    'updated_at' => $user->created_at->addMinutes(rand(61, 600)),
+                    'updated_at' => $user->created_at->addMinutes(rand(61, 300)),
                 ]);
 
             }
