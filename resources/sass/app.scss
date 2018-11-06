@@ -53,6 +53,12 @@
     width: 100%;
     text-align: center;
     font-size: large;
+    a {
+        color: $white;
+    }
+    a:hover {
+        text-decoration: none;
+    }
 }
 
 .welcome-links > a {

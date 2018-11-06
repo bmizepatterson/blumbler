@@ -10518,6 +10518,14 @@ a.text-dark:focus {
   font-size: large;
 }
 
+.welcome-new a {
+  color: #fff;
+}
+
+.welcome-new a:hover {
+  text-decoration: none;
+}
+
 .welcome-links > a {
   color: #fff;
   padding: 0 25px;

@@ -20,8 +20,22 @@
         <div class="brand display-1">blumblr</div>
 
         <div class="welcome-new">
-            <p>see what's new</p>
-            <p class="mb-0"><i class="fas fa-arrow-down"></i></p>
+            <p><a href="#posts">see what's new</a></p>
+            <a href="#posts"><i class="fas fa-arrow-down"></i></a>
         </div>
     </div>
+</div>
+
+<a name="posts">
+<div>
+    @foreach ($posts as $post)
+        <post-card
+            user="{{ $post->user->name }}"
+            updated-at-string="{{ $post->updated_at }}"
+        >
+            <template slot="title">{{ $post->title }}</template>
+            <template slot="body">{{ $post->body }}</template>
+        </post-card>
+    @endforeach
+</div>
 @endsection
