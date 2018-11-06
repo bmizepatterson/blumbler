@@ -46,6 +46,7 @@
         @foreach (Auth::user()->posts as $post)
             <post-card
                 updated-at-string="{{ $post->updated_at }}"
+                post-url="{{ route('posts.show', $post) }}"
                 edit-url="{{ route('posts.edit', $post) }}"
                 delete-url="{{ route('posts.destroy', $post) }}"
             >
