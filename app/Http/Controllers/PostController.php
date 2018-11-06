@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 
 use App\Post;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        // No index
     }
 
     /**
@@ -24,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        // No separate create page
     }
 
     /**
@@ -35,7 +36,19 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|max:255',
+            'body'  => 'required'
+        ]);
+
+        $post = new Post;
+        $post->title = $request->title;
+        $post->body = $request->body;
+
+        Auth::user()->posts()->save($post);
+
+        $request->session()->flash('status', "<strong>{$post->title}</strong> has been posted!");
+        return redirect()->route('home');
     }
 
     /**

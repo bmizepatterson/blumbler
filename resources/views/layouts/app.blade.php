@@ -54,6 +54,18 @@
     </div>
 </nav>
 
+
+@if (session('status'))
+    <div class="alert alert-success rounded-0 border-0 text-center" role="alert">
+        {!! session('status') !!}
+    </div>
+@endif
+@if ($errors->any())
+    <div class="alert alert-danger rounded-0 border-0 text-center" role="alert">
+        Please fix the errors below.
+    </div>
+@endif
+
 <main class="py-4">
     @yield('content')
 </main>
