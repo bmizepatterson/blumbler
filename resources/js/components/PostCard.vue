@@ -3,7 +3,9 @@
     <div class="col-md-8 mb-5">
         <div class="card">
 
-            <div class="card-header"><h4 class="m-0"><slot name="title"></slot></h4></div>
+            <div class="card-header">
+                <h4 class="m-0"><a :href="postUrl"><slot name="title"></slot></a></h4>
+            </div>
 
             <div class="card-body"><slot name="body"></slot></div>
 
@@ -18,6 +20,7 @@
 <script>
 export default {
     props: {
+        postUrl: String,
         user: String,
         updatedAtString: String
     },

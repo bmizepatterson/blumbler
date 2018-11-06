@@ -64021,9 +64021,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
+        postUrl: String,
         user: String,
         updatedAtString: String
     },
@@ -64047,7 +64050,9 @@ var render = function() {
     _c("div", { staticClass: "col-md-8 mb-5" }, [
       _c("div", { staticClass: "card" }, [
         _c("div", { staticClass: "card-header" }, [
-          _c("h4", { staticClass: "m-0" }, [_vm._t("title")], 2)
+          _c("h4", { staticClass: "m-0" }, [
+            _c("a", { attrs: { href: _vm.postUrl } }, [_vm._t("title")], 2)
+          ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [_vm._t("body")], 2),

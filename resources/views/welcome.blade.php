@@ -30,6 +30,7 @@
 <div>
     @foreach ($posts as $post)
         <post-card
+            post-url="{{ route('posts.show', $post) }}"
             user="{{ $post->user->name }}"
             updated-at-string="{{ $post->updated_at }}"
         >
