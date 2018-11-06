@@ -9,11 +9,6 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-.navbar-laravel {
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
-
 // WELCOME PAGE
 
 .brand, .navbar-brand {
@@ -67,4 +62,9 @@
     font-size: 13px;
     font-weight: 600;
     letter-spacing: .1rem;
+}
+
+// NAV BAR
+.nav-link, .nav-link:hover {
+    color: $primary;
 }

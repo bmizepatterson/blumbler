@@ -46,9 +46,12 @@
         @foreach (Auth::user()->posts as $post)
             <post-card
                 updated-at-string="{{ $post->updated_at }}"
+                edit-url="{{ route('posts.edit', $post) }}"
+                delete-url="{{ route('posts.destroy', $post) }}"
             >
                 <template slot="title">{{ $post->title }}</template>
                 <template slot="body">{{ $post->body }}</template>
+                <template slot="deleteformfields">@csrf @method('DELETE')</template>
             </post-card>
         @endforeach
     @endif

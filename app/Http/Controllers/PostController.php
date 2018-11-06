@@ -88,11 +88,14 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Request $request, Post $post)
     {
-        //
+        $post->delete();
+        $request->session()->flash('status', "The post has been deleted.");
+        return redirect()->route('home');
     }
 }

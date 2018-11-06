@@ -64023,17 +64023,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
-        postUrl: String,
         user: String,
+        postUrl: String,
+        editUrl: String,
+        deleteUrl: String,
         updatedAtString: String
     },
 
     computed: {
         updatedAt: function updatedAt() {
             return Moment(this.updatedAtString).fromNow();
+        }
+    },
+
+    methods: {
+        submitDeleteForm: function submitDeleteForm() {
+            this.$refs.deleteForm.submit();
         }
     }
 });
@@ -64058,6 +64073,41 @@ var render = function() {
         _c("div", { staticClass: "card-body" }, [_vm._t("body")], 2),
         _vm._v(" "),
         _c("div", { staticClass: "card-footer" }, [
+          _vm.editUrl || _vm.deleteUrl
+            ? _c("div", { staticClass: "float-right pt-1 text-muted" }, [
+                _vm.editUrl
+                  ? _c(
+                      "a",
+                      { staticClass: "m-2", attrs: { href: _vm.editUrl } },
+                      [_c("i", { staticClass: "fas fa-pen-square" })]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.deleteUrl
+                  ? _c(
+                      "a",
+                      {
+                        staticClass: "m-2",
+                        attrs: { href: "#" },
+                        on: { click: _vm.submitDeleteForm }
+                      },
+                      [_c("i", { staticClass: "fas fa-trash" })]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _c(
+                  "form",
+                  {
+                    ref: "deleteForm",
+                    staticClass: "d-none",
+                    attrs: { method: "post", action: _vm.deleteUrl }
+                  },
+                  [_vm._t("deleteformfields")],
+                  2
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
           _c(
             "small",
             [

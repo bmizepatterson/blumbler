@@ -33,7 +33,7 @@
                 @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                            <i class="fas fa-user-circle mr-1"></i>{{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -56,12 +56,18 @@
 
 
 @if (session('status'))
-    <div class="alert alert-success rounded-0 border-0 text-center" role="alert">
+    <div class="alert alert-success rounded-0 border-0 text-center alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
         {!! session('status') !!}
     </div>
 @endif
 @if ($errors->any())
-    <div class="alert alert-danger rounded-0 border-0 text-center" role="alert">
+    <div class="alert alert-danger rounded-0 border-0 text-center alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
         Please fix the errors below.
     </div>
 @endif
