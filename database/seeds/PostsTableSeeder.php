@@ -84,7 +84,7 @@ class PostsTableSeeder extends Seeder
 
         foreach ($users as $user) {
 
-            $count = rand(5, 50);
+            $count = rand(5, 10);
 
             for ($i = 0; $i < $count; $i++) {
 
