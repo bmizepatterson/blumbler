@@ -65,6 +65,11 @@
 }
 
 // NAV BAR
-.nav-link, .nav-link:hover {
+.nav-link, .nav-link:hover, .navbar-brand:hover {
     color: $primary;
+}
+
+// FORMS
+textarea {
+    resize: none;
 }

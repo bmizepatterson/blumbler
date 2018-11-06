@@ -10449,7 +10449,12 @@ a.text-dark:focus {
 }
 
 .nav-link,
-.nav-link:hover {
+.nav-link:hover,
+.navbar-brand:hover {
   color: #E1DD8F;
+}
+
+textarea {
+  resize: none;
 }
 

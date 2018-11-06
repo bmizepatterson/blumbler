@@ -5,37 +5,29 @@
     <div class="row justify-content-center">
         <div class="col-md-8 mb-5">
             <div class="card">
-                <div class="card-header"><h4 class="m-0">Create a new post</h4></div>
-
-                <div class="card-body">
+                <div class="card-body p-0">
 
                     <form method="post" action="{{ route('posts.store') }}">
                         @csrf
-                        <div class="form-group">
-                            <label for="title">Title:</label>
-                            <input class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" id="title" name="title" value="{{ old('title') }}"required autofocus>
-                            @if ($errors->has('title'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('title') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label for="body">Post:</label>
-                            <textarea class="form-control{{ $errors->has('body') ? ' is-invalid' : '' }}" id="body" name="body" required>{{ old('body') }}</textarea>
-                            @if ($errors->has('body'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('body') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                        <div class="row pt-3">
-                            <div class="col">
-                                <button type="submit" class="brand text-dark btn btn-block btn-primary">blumblit!</button>
-                            </div>
-                        </div>
-                    </form>
+                        <input class="form-control border-0 shadow-none pt-3{{ $errors->has('title') ? ' is-invalid' : '' }}" id="title" name="title" value="{{ old('title') }}" placeholder="title" required autofocus>
+                        @if ($errors->has('title'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('title') }}</strong>
+                            </span>
+                        @endif
 
+                        <hr>
+
+                        <textarea class="form-control border-0 shadow-none pb-3 pt-0{{ $errors->has('body') ? ' is-invalid' : '' }}" id="body" name="body" placeholder="post" rows="5" required>{{ old('body') }}</textarea>
+                        @if ($errors->has('body'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('body') }}</strong>
+                            </span>
+                        @endif
+
+                        <button type="submit" class="brand text-dark btn btn-block btn-primary rounded-0">blumblit!</button>
+
+                    </form>
 
                 </div>
             </div>
