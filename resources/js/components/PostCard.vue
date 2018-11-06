@@ -8,7 +8,7 @@
             <div class="card-body"><slot name="body"></slot></div>
 
             <div class="card-footer">
-                <small><i class="fas fa-user-circle mr-1"></i>Posted by {{ user }} on {{ updatedAtString }}</small>
+                <small><i class="fas fa-user-circle mr-1"></i>Posted by {{ user }} {{ updatedAt }}</small>
             </div>
         </div>
     </div>
@@ -20,6 +20,12 @@ export default {
     props: {
         user: String,
         updatedAtString: String
+    },
+
+    computed: {
+        updatedAt: function() {
+            return Moment(this.updatedAtString).fromNow();
+        }
     }
 }
 </script>
