@@ -36,18 +36,20 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required|max:255',
-            'body'  => 'required'
-        ]);
+        if (Auth::id() == $post->user->id) {
+            $request->validate([
+                'title' => 'required|max:255',
+                'body'  => 'required'
+            ]);
 
-        $post = new Post;
-        $post->title = $request->title;
-        $post->body = $request->body;
+            $post = new Post;
+            $post->title = $request->title;
+            $post->body = $request->body;
 
-        Auth::user()->posts()->save($post);
+            Auth::user()->posts()->save($post);
 
-        $request->session()->flash('status', "<strong>{$post->title}</strong> has been posted!");
+            $request->session()->flash('status', "<strong>{$post->title}</strong> has been posted!");
+        }
         return redirect()->route('home');
     }
 
@@ -70,7 +72,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.edit', compact('post'));
+        if (Auth::id() == $post->user->id) {
+            return view('posts.edit', compact('post'));
+        }
+        return redirect()->route('home');
     }
 
     /**
@@ -82,16 +87,18 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $request->validate([
-            'title' => 'required|max:255',
-            'body'  => 'required'
-        ]);
+        if (Auth::id() == $post->user->id) {
+            $request->validate([
+                'title' => 'required|max:255',
+                'body'  => 'required'
+            ]);
 
-        $post->title = $request->title;
-        $post->body = $request->body;
-        $post->save();
+            $post->title = $request->title;
+            $post->body = $request->body;
+            $post->save();
 
-        $request->session()->flash('status', "Post has been updated!");
+            $request->session()->flash('status', "Post has been updated!");
+        }
         return redirect()->route('home');
     }
 
@@ -104,8 +111,10 @@ class PostController extends Controller
      */
     public function destroy(Request $request, Post $post)
     {
-        $post->delete();
-        $request->session()->flash('status', "The post has been deleted.");
+        if (Auth::id() == $post->user->id) {
+            $post->delete();
+            $request->session()->flash('status', "The post has been deleted.");
+        }
         return redirect()->route('home');
     }
 }
