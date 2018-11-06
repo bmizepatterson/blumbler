@@ -47440,12 +47440,16 @@ var render = function() {
         _c("div", { staticClass: "card-body" }, [_vm._t("body")], 2),
         _vm._v(" "),
         _c("div", { staticClass: "card-footer" }, [
-          _c("small", [
-            _c("i", { staticClass: "fas fa-user-circle mr-1" }),
-            _vm._v(
-              "Posted by " + _vm._s(_vm.user) + " " + _vm._s(_vm.updatedAt)
-            )
-          ])
+          _c(
+            "small",
+            [
+              _c("i", { staticClass: "fas fa-user-circle mr-1" }),
+              _vm._v("Posted "),
+              _vm.user ? [_vm._v("by " + _vm._s(_vm.user))] : _vm._e(),
+              _vm._v(" " + _vm._s(_vm.updatedAt))
+            ],
+            2
+          )
         ])
       ])
     ])

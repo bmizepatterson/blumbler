@@ -8,7 +8,7 @@
             <div class="card-body"><slot name="body"></slot></div>
 
             <div class="card-footer">
-                <small><i class="fas fa-user-circle mr-1"></i>Posted by {{ user }} {{ updatedAt }}</small>
+                <small><i class="fas fa-user-circle mr-1"></i>Posted <template v-if="user">by {{ user }}</template> {{ updatedAt }}</small>
             </div>
         </div>
     </div>
