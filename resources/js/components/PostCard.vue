@@ -1,11 +1,15 @@
 <template>
 <div class="row justify-content-center">
     <div class="col-md-8 mb-5">
-        <div class="card">
+        <div class="card post-image-container">
 
-            <div class="card-header">
-                <h4 class="m-0"><a :href="postUrl"><slot name="title"></slot></a></h4>
-            </div>
+            <template v-if="imageUrl">
+                <div class="post-image" :style="{ backgroundImage: 'url(' + imageUrl + ')' }">
+                    <a :href="imageUrl" target="_blank" rel="noopener noreferrer"></a>
+                </div>
+            </template>
+
+            <h4 class="card-header m-0"><a :href="postUrl"><slot name="title"></slot></a></h4>
 
             <div class="card-body"><slot name="body"></slot></div>
 
@@ -31,7 +35,8 @@ export default {
         postUrl: String,
         editUrl: String,
         deleteUrl: String,
-        updatedAtString: String
+        updatedAtString: String,
+        imageUrl: String
     },
 
     mounted: function() {
@@ -51,3 +56,20 @@ export default {
     }
 }
 </script>
+
+<style>
+.post-image {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 50vw;
+}
+.post-image > a {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+.post-image-container {
+    overflow: hidden;
+}
+</style>

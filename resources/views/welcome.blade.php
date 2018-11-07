@@ -31,6 +31,7 @@
     @foreach ($posts as $post)
         <post-card
             post-url="{{ route('posts.show', $post) }}"
+            image-url="{{ $post->image_url }}"
             user="{{ $post->user->name }}"
             updated-at-string="{{ $post->updated_at }}"
         >

@@ -37,12 +37,14 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|max:255',
-            'body'  => 'required'
+            'title'     => 'required|max:255',
+            'image_url' => 'nullable|url',
+            'body'      => 'required'
         ]);
 
         $post = new Post;
         $post->title = $request->title;
+        $post->image_url = $request->image_url;
         $post->body = $request->body;
 
         Auth::user()->posts()->save($post);

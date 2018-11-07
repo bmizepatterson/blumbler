@@ -18,6 +18,15 @@
 
                         <hr>
 
+                        <input class="form-control border-0 shadow-none py-3{{ $errors->has('image_url') ? ' is-invalid' : '' }}" id="image_url" name="image_url" value="{{ old('image_url') }}" placeholder="image url">
+                        @if ($errors->has('image_url'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('image_url') }}</strong>
+                            </span>
+                        @endif
+
+                        <hr>
+
                         <textarea class="form-control border-0 shadow-none pb-3 pt-0{{ $errors->has('body') ? ' is-invalid' : '' }}" id="body" name="body" placeholder="post" rows="5" required>{{ old('body') }}</textarea>
                         @if ($errors->has('body'))
                             <span class="invalid-feedback" role="alert">
@@ -37,6 +46,7 @@
     @if (Auth::user()->posts()->count())
         @foreach (Auth::user()->posts as $post)
             <post-card
+                image-url="{{ $post->image_url }}"
                 updated-at-string="{{ $post->updated_at }}"
                 post-url="{{ route('posts.show', $post) }}"
                 edit-url="{{ route('posts.edit', $post) }}"
