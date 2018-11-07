@@ -25,7 +25,7 @@
                             </span>
                         @endif
 
-                        <button type="submit" class="brand text-dark btn btn-block btn-primary rounded-0">blumblit!</button>
+                        <button type="submit" class="brand text-dark btn btn-block btn-primary rounded-0 shadow-none">blumblit!</button>
 
                     </form>
 
