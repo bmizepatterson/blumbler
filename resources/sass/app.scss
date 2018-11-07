@@ -9,6 +9,10 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+:root {
+    scroll-behavior: smooth;
+}
+
 // WELCOME PAGE
 
 .brand, .navbar-brand {

@@ -10386,6 +10386,10 @@ a.text-dark:focus {
   }
 }
 
+:root {
+  scroll-behavior: smooth;
+}
+
 .brand,
 .navbar-brand {
   font-family: Pacifico, cursive;
