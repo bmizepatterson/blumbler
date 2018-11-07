@@ -27,7 +27,7 @@
 </div>
 
 <a name="posts"></a>
-<div>
+<div class="pt-5">
     @foreach ($posts as $post)
         <post-card
             post-url="{{ route('posts.show', $post) }}"
