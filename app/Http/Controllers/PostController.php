@@ -36,20 +36,18 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        if (Auth::id() == $post->user->id) {
-            $request->validate([
-                'title' => 'required|max:255',
-                'body'  => 'required'
-            ]);
+        $request->validate([
+            'title' => 'required|max:255',
+            'body'  => 'required'
+        ]);
 
-            $post = new Post;
-            $post->title = $request->title;
-            $post->body = $request->body;
+        $post = new Post;
+        $post->title = $request->title;
+        $post->body = $request->body;
 
-            Auth::user()->posts()->save($post);
+        Auth::user()->posts()->save($post);
 
-            $request->session()->flash('status', "<strong>{$post->title}</strong> has been posted!");
-        }
+        $request->session()->flash('status', "Posted!");
         return redirect()->route('home');
     }
 
