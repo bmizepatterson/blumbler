@@ -64040,6 +64040,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         updatedAtString: String
     },
 
+    mounted: function mounted() {
+        $('[data-toggle="tooltip"]').tooltip();
+    },
+
     computed: {
         updatedAt: function updatedAt() {
             return Moment(this.updatedAtString).fromNow();
@@ -64078,7 +64082,15 @@ var render = function() {
                 _vm.editUrl
                   ? _c(
                       "a",
-                      { staticClass: "m-2", attrs: { href: _vm.editUrl } },
+                      {
+                        staticClass: "m-2",
+                        attrs: {
+                          href: _vm.editUrl,
+                          "data-toggle": "tooltip",
+                          "data-placement": "top",
+                          title: "Edit this post"
+                        }
+                      },
                       [_c("i", { staticClass: "fas fa-pen-square" })]
                     )
                   : _vm._e(),
@@ -64088,7 +64100,12 @@ var render = function() {
                       "a",
                       {
                         staticClass: "m-2",
-                        attrs: { href: "#" },
+                        attrs: {
+                          href: "#",
+                          "data-toggle": "tooltip",
+                          "data-placement": "top",
+                          title: "Delete this post"
+                        },
                         on: { click: _vm.submitDeleteForm }
                       },
                       [_c("i", { staticClass: "fas fa-trash" })]

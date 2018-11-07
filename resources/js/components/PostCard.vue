@@ -11,8 +11,8 @@
 
             <div class="card-footer">
                 <div v-if="editUrl || deleteUrl" class="float-right pt-1 text-muted">
-                    <a v-if="editUrl" class="m-2" :href="editUrl"><i class="fas fa-pen-square"></i></a>
-                    <a v-if="deleteUrl" class="m-2" href="#" @click="submitDeleteForm"><i class="fas fa-trash"></i></a>
+                    <a v-if="editUrl" class="m-2" :href="editUrl" data-toggle="tooltip" data-placement="top" title="Edit this post"><i class="fas fa-pen-square"></i></a>
+                    <a v-if="deleteUrl" class="m-2" href="#" @click="submitDeleteForm" data-toggle="tooltip" data-placement="top" title="Delete this post"><i class="fas fa-trash"></i></a>
                     <form class="d-none" ref="deleteForm" method="post" :action="deleteUrl">
                         <slot name="deleteformfields"></slot>
                     </form>
@@ -32,6 +32,10 @@ export default {
         editUrl: String,
         deleteUrl: String,
         updatedAtString: String
+    },
+
+    mounted: function() {
+        $('[data-toggle="tooltip"]').tooltip();
     },
 
     computed: {
