@@ -24,6 +24,15 @@ files.keys().map(key => {
     return Vue.component(_.last(key.split('/')).split('.')[0], files(key))
 })
 
+// Custom v-focus directive
+Vue.directive('focus', {
+    // When the bound element is inserted into the DOM...
+    inserted: function (el) {
+        // Focus the element
+        el.focus()
+    }
+})
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -33,3 +42,5 @@ files.keys().map(key => {
 const app = new Vue({
     el: '#app'
 });
+
+

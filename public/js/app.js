@@ -30295,7 +30295,16 @@ window.Moment = __webpack_require__(0);
 var files = __webpack_require__(164);
 
 files.keys().map(function (key) {
-  return Vue.component(_.last(key.split('/')).split('.')[0], files(key));
+    return Vue.component(_.last(key.split('/')).split('.')[0], files(key));
+});
+
+// Custom v-focus directive
+Vue.directive('focus', {
+    // When the bound element is inserted into the DOM...
+    inserted: function inserted(el) {
+        // Focus the element
+        el.focus();
+    }
 });
 
 /**
@@ -30305,7 +30314,7 @@ files.keys().map(function (key) {
  */
 
 var app = new Vue({
-  el: '#app'
+    el: '#app'
 });
 
 /***/ }),

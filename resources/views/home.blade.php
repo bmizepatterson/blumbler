@@ -9,7 +9,7 @@
 
                     <form method="post" action="{{ route('posts.store') }}">
                         @csrf
-                        <input class="form-control border-0 shadow-none pt-3{{ $errors->has('title') ? ' is-invalid' : '' }}" id="title" name="title" value="{{ old('title') }}" placeholder="title" required autofocus>
+                        <input v-focus class="form-control border-0 shadow-none pt-3{{ $errors->has('title') ? ' is-invalid' : '' }}" id="title" name="title" value="{{ old('title') }}" placeholder="title" required autofocus>
                         @if ($errors->has('title'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('title') }}</strong>
