@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 use App\Post;
 use Illuminate\Http\Request;
@@ -70,9 +71,9 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(Request $request, Post $post)
     {
-        if (Auth::id() == $post->user->id) {
+        if (Auth::user()->can('update', $post)) {
             return view('posts.edit', compact('post'));
         }
         return redirect()->route('home');
@@ -87,7 +88,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        if (Auth::id() == $post->user->id) {
+        if (Auth::user()->can('update', $post)) {
             $request->validate([
                 'title' => 'required|max:255',
                 'body'  => 'required'
@@ -111,7 +112,7 @@ class PostController extends Controller
      */
     public function destroy(Request $request, Post $post)
     {
-        if (Auth::id() == $post->user->id) {
+        if (Auth::user()->can('delete', $post)) {
             $post->delete();
             $request->session()->flash('status', "The post has been deleted.");
         }
