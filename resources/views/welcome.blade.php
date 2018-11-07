@@ -26,7 +26,7 @@
     </div>
 </div>
 
-<a name="posts">
+<a name="posts"></a>
 <div>
     @foreach ($posts as $post)
         <post-card
